@@ -1,0 +1,26 @@
+<md-dialog aria-label="Flight Details">
+  <md-dialog-content>
+    <div class="md-dialog-content">
+      <section style="margin-bottom: 16px">
+        <div ng-repeat="trip in model.trips" layout="column">
+          <h2 class="md-headline">{{ trip.origin | airport }} <md-icon class="material-icons">arrow_right_alt</md-icon> {{ trip.destination | airport }}</h2>
+          <span class="md-body-1">{{ trip.time[0] | date: 'mediumDate'}}, {{ trip.time[0] | date: 'HH:mm' }} &mdash; {{ trip.time[1] | date: 'HH:mm' }} ({{ trip.duration }})</span>
+          <div layout layout-align="space-between center">
+            <span>
+              <md-icon class="material-icons">flight</md-icon> {{ trip.flightNumber }}
+            </span>
+            <b>{{ trip.fare }} {{ model.currency }}</b>
+          </div>
+        </div>
+      </section>
+      <h2 class="md-title">= {{ model.roundTripFare.toFixed(2) }} {{ model.currency }}</h2>
+      <section ng-show="model.chart.labels && model.chart.data">
+        <h4 class="md-subhead">Only 10 last fares are shown</h4>
+        <canvas class="chart chart-line" chart-labels="model.chart.labels" chart-data="model.chart.data" chart-dataset-override="{ 'backgroundColor': 'rgb(33, 150, 243)' }"></canvas>
+      </section>
+    </div>
+  </md-dialog-content>
+  <md-dialog-actions layout layout-align="end center">
+    <md-button class="md-primary" ng-click="cancel()">Close</md-button>
+  </md-dialog-actions>
+</md-dialog>

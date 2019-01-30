@@ -1,0 +1,28 @@
+<md-dialog aria-label="New Flight">
+  <md-dialog-content>
+    <div class="md-dialog-content">
+      <div layout="column" layout-gt-sm="row">
+        <md-autocomplete md-selected-item="model.origin" md-items="airport in airports" md-search-text="airport1" md-item-text="airport.display" md-min-length="0" md-floating-label="Origin" ng-disabled="busy" flex>
+          <span>{{ airport.display }}</span>
+  	    </md-autocomplete>
+  	    <md-autocomplete md-selected-item="model.destination" md-items="airport in airports" md-search-text="airport2" md-item-text="airport.display" md-min-length="0" md-floating-label="Destination" ng-disabled="busy" flex>
+  		    <span>{{ airport.display }}</span>
+  	    </md-autocomplete>
+      </div>
+      <div layout="column" layout-gt-sm="row">
+        <md-input-container flex>
+          <label>Date Out {{ model.dateOut | date: 'mediumDate' }}</label>
+          <md-datepicker ng-model="model.dateOut" md-date-filter="validDates" md-min-date="startOfYear" md-max-date="endOfYear" md-hide-icons="calendar" ng-disabled="busy || !model.origin || !model.destination"></md-datepicker>
+        </md-input-container>
+        <md-input-container flex>
+          <label>Date In: {{ model.dateIn | date: 'mediumDate' }}</label>
+          <md-datepicker ng-model="model.dateIn" md-date-filter="validDates" md-min-date="model.dateOut" md-max-date="endOfYear" md-hide-icons="calendar" ng-disabled="busy || !model.origin || !model.destination"></md-datepicker>
+        </md-input-container>
+      </div>
+    </div>
+  </md-dialog-content>
+  <md-dialog-actions layout layout-align="end center">
+    <md-button class="md-primary" ng-click="ok()" ng-disabled="!model.origin || !model.destination || !model.dateOut || !model.dateIn">OK</md-button>
+    <md-button ng-click="cancel()">Close</md-button>
+  </md-dialog-actions>
+</md-dialog>

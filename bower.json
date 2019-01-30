@@ -1,0 +1,32 @@
+{
+  "name": "airfaretracker2",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Andrei Yurushev"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.7.5",
+    "angular-ui-router": "^1.0.20",
+    "angular-material": "^1.1.12",
+    "angular-chart.js": "^1.1.1",
+    "moment": "^2.24.0"
+  },
+  "overrides": {
+    "moment": {
+      "main": [
+        "moment.js",
+        "locale/ru.js"
+      ]
+    }
+  }
+}

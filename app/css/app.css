@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700&subset=cyrillic');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+body {
+  background-color: #eee;
+}
+
+.fw-700 {
+  font-weight: 700;
+}
