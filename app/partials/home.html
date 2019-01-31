@@ -2,14 +2,20 @@
   <md-toolbar>
     <div layout>
       <md-toolbar-filler layout layout-align="center center">
-        <md-icon class="material-icons">flight</md-icon>
+        <md-icon id="fillerIcon" class="material-icons">flight</md-icon>
       </md-toolbar-filler>
-      <div class="md-toolbar-tools">
+      <div style="margin-right: 8px" class="md-toolbar-tools">
         <h2 md-truncate flex>Airfare Tracker v2</h2>
-        <md-button class="md-icon-button" ng-click="newFlight()" aria-label="New">
+        <md-button class="md-fab md-mini" ng-click="newFlight()" aria-label="New Flight">
+          <md-tooltip>New Flight</md-tooltip>
           <md-icon class="material-icons">add</md-icon>
         </md-button>
-        <md-button class="md-icon-button" ng-click="saveFlights()" aria-label="Save">
+        <md-button class="md-icon-button" ng-click="checkAll()" arial-label="Check All" ng-disabled="!flights.length">
+          <md-tooltip>Check All</md-tooltip>
+          <md-icon class="material-icons">refresh</md-icon>
+        </md-button>
+        <md-button class="md-icon-button" ng-click="saveFlights()" aria-label="Save Changes">
+          <md-tooltip>Save Changes</md-tooltip>
           <md-icon class="material-icons">save_alt</md-icon>
         </md-button>
       </div>
@@ -17,7 +23,7 @@
   </md-toolbar>
   <md-content flex>
     <md-list>
-      <md-subheader>Flights {{ flights.length }}</md-subheader>
+      <!--<md-subheader>Flights {{ flights.length }}</md-subheader>-->
       <md-list-item class="md-3-line" ng-repeat="flight in flights" ng-click="openDetails(flight)">
         <md-icon class="material-icons" ng-class="{ 'md-avatar-icon': flight.trips.length === 2 }" ng-hide="flight.busy">flight</md-icon>
         <md-progress-circular style="margin-right: 16px" md-mode="indeterminate" md-diameter="40" ng-show="flight.busy"></md-progress-circular>
@@ -30,7 +36,7 @@
           </h4>
           <p>{{ flight.dateOut | date: 'mediumDate' }} &mdash; {{ flight.dateIn | date: 'mediumDate' }}</p>
         </div>
-        <md-button class="md-secondary md-icon-button" ng-click="fetchData(flight)" aria-label="Fetch" ng-disabled="flight.busy">
+        <md-button class="md-secondary md-icon-button" ng-click="check(flight)" aria-label="Check" ng-disabled="flight.busy">
           <md-icon class="material-icons">refresh</md-icon>
         </md-button>
         <md-button class="md-secondary md-icon-button md-warn" ng-click="deleteFlight(flight)" aria-label="Delete">

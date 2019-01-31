@@ -10,7 +10,7 @@ app.controller('HomeController', ['$scope', '$http', '$mdDialog', '$timeout', '$
     }).then(function(result) {
       //console.log('newFlight result', result);
       $scope.flights.push(result);
-      $scope.fetchData(result);
+      $scope.check(result);
     }, function() {});
   }
 
@@ -67,7 +67,7 @@ app.controller('HomeController', ['$scope', '$http', '$mdDialog', '$timeout', '$
     }
   }
 
-  $scope.fetchData = function(model) {
+  $scope.check = function(model) {
     if (model.busy) {
       return;
     }
@@ -126,6 +126,15 @@ app.controller('HomeController', ['$scope', '$http', '$mdDialog', '$timeout', '$
     });
   }
 
+  $scope.checkAll = function() {
+    if ($scope.flights.length === 0) {
+      return;
+    }
+    angular.forEach($scope.flights, function(flight) {
+      $scope.check(flight);
+    });
+  }
+
   $scope.saveFlights = function() {
     if (storage.save('flights', $scope.flights)) {
       alert('Flights saved to localStorage.');
@@ -133,16 +142,8 @@ app.controller('HomeController', ['$scope', '$http', '$mdDialog', '$timeout', '$
   }
 
   $scope.deleteFlight = function(model) {
-    $mdDialog.show($mdDialog.confirm({
-      title: 'Would you like to delete flight data?',
-      ariaLabel: 'Delete',
-      targetEvent: event,
-      ok: 'Delete',
-      cancel: 'Cancel'
-    })).then(function() {
-      var index = $scope.flights.indexOf(model);
-      $scope.flights.splice(index, 1);
-    });
+    var index = $scope.flights.indexOf(model);
+    $scope.flights.splice(index, 1);
   }
 
 }]);

@@ -8,3 +8,15 @@ body {
 .fw-700 {
   font-weight: 700;
 }
+
+md-toolbar {
+  background-color: #4c9ef1 !important;
+}
+
+md-toolbar md-toolbar-filler {
+  background-color: #e0e0e0;
+}
+
+md-toolbar md-toolbar-filler #fillerIcon {
+  color: #4c9ef1;
+}
