@@ -14,7 +14,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$mdDat
   });
   $urlRouterProvider.when('/', '/home');
   $urlRouterProvider.otherwise('/')
-  $locationProvider.html5Mode(true);
+  //$locationProvider.html5Mode(true);
 
   $mdDateLocaleProvider.firstDayOfWeek = 1;
   $mdDateLocaleProvider.formatDate = function(date) {

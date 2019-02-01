@@ -10,7 +10,7 @@ body {
 }
 
 md-toolbar {
-  background-color: #4c9ef1 !important;
+  background-color: #2196f3 !important;
 }
 
 md-toolbar md-toolbar-filler {
@@ -18,5 +18,5 @@ md-toolbar md-toolbar-filler {
 }
 
 md-toolbar md-toolbar-filler #fillerIcon {
-  color: #4c9ef1;
+  color: #2196f3;
 }
