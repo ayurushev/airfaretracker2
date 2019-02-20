@@ -1,31 +1,25 @@
 <div layout="column">
-  <md-toolbar>
-    <div layout>
-      <md-toolbar-filler layout layout-align="center center">
-        <md-icon id="fillerIcon" class="material-icons">flight</md-icon>
-      </md-toolbar-filler>
-      <div style="margin-right: 8px" class="md-toolbar-tools">
-        <h2 md-truncate flex>Airfare Tracker v2</h2>
-        <md-button class="md-fab md-mini" ng-click="newFlight()" aria-label="New Flight">
-          <md-tooltip>New Flight</md-tooltip>
-          <md-icon class="material-icons">add</md-icon>
-        </md-button>
-        <md-button class="md-icon-button" ng-click="checkAll()" arial-label="Check All" ng-disabled="!flights.length">
-          <md-tooltip>Check All</md-tooltip>
-          <md-icon class="material-icons">refresh</md-icon>
-        </md-button>
-        <md-button class="md-icon-button" ng-click="saveFlights()" aria-label="Save Changes">
-          <md-tooltip>Save Changes</md-tooltip>
-          <md-icon class="material-icons">save_alt</md-icon>
-        </md-button>
-      </div>
+  <md-toolbar style="padding-right: 8px">
+    <div class="md-toolbar-tools">
+      <h2 md-truncate flex>AFT v2</h2>
+      <md-button class="md-fab md-mini" ng-click="newFlight()" aria-label="New Flight">
+        <md-tooltip>New Flight</md-tooltip>
+        <md-icon class="material-icons">add</md-icon>
+      </md-button>
+      <md-button class="md-icon-button" ng-click="checkAll()" arial-label="Check All" ng-disabled="!flights.length">
+        <md-tooltip>Check All</md-tooltip>
+        <md-icon class="material-icons">sync</md-icon>
+      </md-button>
+      <md-button class="md-icon-button" ng-click="saveFlights()" aria-label="Save Changes">
+        <md-tooltip>Save Changes</md-tooltip>
+        <md-icon class="material-icons">save_alt</md-icon>
+      </md-button>
     </div>
   </md-toolbar>
   <md-content flex>
     <md-list>
-      <!--<md-subheader>Flights {{ flights.length }}</md-subheader>-->
       <md-list-item class="md-3-line" ng-repeat="flight in flights" ng-click="openDetails(flight)">
-        <md-icon class="material-icons" ng-class="{ 'md-avatar-icon': flight.trips.length === 2 }" ng-hide="flight.busy">flight</md-icon>
+        <md-icon class="material-icons" ng-class="{ 'md-avatar-icon': flight.trips.length === 2 }" ng-hide="flight.busy">{{ flight.enabled ? 'flight' : 'sync_disabled' }}</md-icon>
         <md-progress-circular style="margin-right: 16px" md-mode="indeterminate" md-diameter="40" ng-show="flight.busy"></md-progress-circular>
         <div class="md-list-item-text">
           <h3>{{ flight.origin | airport }} to {{ flight.destination | airport }}</h3>
@@ -36,10 +30,10 @@
           </h4>
           <p>{{ flight.dateOut | date: 'mediumDate' }} &mdash; {{ flight.dateIn | date: 'mediumDate' }}</p>
         </div>
-        <md-button class="md-secondary md-icon-button" ng-click="check(flight)" aria-label="Check" ng-disabled="flight.busy">
-          <md-icon class="material-icons">refresh</md-icon>
+        <md-button class="md-secondary md-icon-button" ng-click="check(flight)" aria-label="Check" ng-disabled="flight.busy" ng-show="flight.enabled">
+          <md-icon class="material-icons">sync</md-icon>
         </md-button>
-        <md-button class="md-secondary md-icon-button md-warn" ng-click="deleteFlight(flight)" aria-label="Delete">
+        <md-button class="md-secondary md-icon-button md-warn" ng-click="deleteFlight(flight)" aria-label="Delete" ng-disabled="flight.busy">
           <md-icon class="material-icons">clear</md-icon>
         </md-button>
       </md-list-item>

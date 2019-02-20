@@ -12,11 +12,3 @@ body {
 md-toolbar {
   background-color: #2196f3 !important;
 }
-
-md-toolbar md-toolbar-filler {
-  background-color: #e0e0e0;
-}
-
-md-toolbar md-toolbar-filler #fillerIcon {
-  color: #2196f3;
-}

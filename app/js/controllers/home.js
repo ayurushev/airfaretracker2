@@ -68,7 +68,7 @@ app.controller('HomeController', ['$scope', '$http', '$mdDialog', '$timeout', '$
   }
 
   $scope.check = function(model) {
-    if (model.busy) {
+    if (!model.enabled || model.busy) {
       return;
     }
     model.busy = true;

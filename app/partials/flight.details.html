@@ -20,7 +20,8 @@
       </section>
     </div>
   </md-dialog-content>
-  <md-dialog-actions layout layout-align="end center">
+  <md-dialog-actions layout layout-align="space-between center">
+    <md-switch ng-model="model.enabled" flex>Enabled</md-switch>
     <md-button class="md-primary" ng-click="cancel()">Close</md-button>
   </md-dialog-actions>
 </md-dialog>
