@@ -13,7 +13,7 @@ app.controller('NewFlightController', ['$scope', '$http', '$filter', '$timeout',
     var output = [];
     for (var i = 0; i < airports.length; i++) {
       // ignore if origin == destination
-      if (origin && airports[i].code == origin.code) {
+      if (angular.isObject(origin) && airports[i].code == origin.code) {
         continue;
       }
       if (airports[i].display.search(new RegExp(display, 'i')) > -1) {

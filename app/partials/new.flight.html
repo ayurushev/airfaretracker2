@@ -8,11 +8,11 @@
         <span md-highlight-text="airport2" md-highlight-flags="^i" flex>{{ airport.display }}</span>
   	  </md-autocomplete>
       <md-input-container class="md-block">
-        <label>Date Out {{ model.dateOut | date: 'mediumDate' }}</label>
+        <label>Date Out</label>
         <md-datepicker ng-model="model.dateOut" md-date-filter="validDates" md-min-date="startOfYear" md-max-date="endOfYear" md-hide-icons="calendar" ng-disabled="busy || !model.origin || !model.destination"></md-datepicker>
       </md-input-container>
       <md-input-container class="md-block">
-        <label>Date In: {{ model.dateIn | date: 'mediumDate' }}</label>
+        <label>Date In</label>
         <md-datepicker ng-model="model.dateIn" md-date-filter="validDates" md-min-date="model.dateOut" md-max-date="endOfYear" md-hide-icons="calendar" ng-disabled="busy || !model.origin || !model.destination"></md-datepicker>
       </md-input-container>
     </div>

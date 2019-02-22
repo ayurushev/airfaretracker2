@@ -63,7 +63,7 @@ app.controller('HomeController', ['$scope', '$http', '$mdDialog', '$timeout', '$
         $filter('date')(new Date(), 'MMM d'), // line 1
         $filter('date')(new Date(), 'HH:mm')  // line 2
       ]);
-      data.push(model.roundTripFare);
+      data.push(model.roundTripFare.toFixed(2));
     }
   }
 
